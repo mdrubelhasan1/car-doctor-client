@@ -1,4 +1,4 @@
-import  { useContext } from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../../assets/logo.svg'
 import { AuthContext } from '../../../../providers/AuthProvider';
@@ -19,8 +19,12 @@ const Navbar = () => {
         <li><Link to='/services'>Services</Link></li>
         <li><Link to='/blog'>Blog</Link></li>
         <li><Link to='/contact'>Contact</Link></li>
-        { user?.email ? <li><button onClick={handleLogOut}>LogOut</button></li> :
-       <li><Link to='/login'>Login</Link></li> }
+        {user?.email ?
+            <>
+            <li><Link to='/bookings'>My Bookings</Link></li>
+            <li><button onClick={handleLogOut}>Log out</button></li>
+            </> :
+            <li><Link to='/login'>Login</Link></li>}
     </>
     return (
         <div className="navbar bg-base-100 h-24 mb-4">
